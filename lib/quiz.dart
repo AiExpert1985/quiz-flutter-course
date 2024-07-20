@@ -20,7 +20,7 @@ class _QuizState extends State<Quiz> {
     });
   }
 
-  Widget screenWidget() {
+  Widget detectScreenWidget() {
     Widget returnedWidget = StartScreen(_swtichScreen);
     if (screenName == 'questions-screen') {
       returnedWidget = const QuestionsScreen();
@@ -30,6 +30,6 @@ class _QuizState extends State<Quiz> {
 
   @override
   Widget build(context) {
-    return screenWidget();
+    return detectScreenWidget();
   }
 }
