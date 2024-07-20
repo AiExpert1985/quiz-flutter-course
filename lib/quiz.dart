@@ -12,23 +12,24 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
-  String displayedScreenName = 'start-screen';
+  String screenName = 'start-screen';
 
   void _swtichScreen() {
     setState(() {
-      print('I am pressed');
-      displayedScreenName = 'questions-screen';
+      screenName = 'questions-screen';
     });
+  }
+
+  Widget screenWidget() {
+    Widget returnedWidget = StartScreen(_swtichScreen);
+    if (screenName == 'questions-screen') {
+      returnedWidget = const QuestionsScreen();
+    }
+    return returnedWidget;
   }
 
   @override
   Widget build(context) {
-    Widget currenScreenWidget = StartScreen(_swtichScreen);
-    if (displayedScreenName == 'start-screen') {
-      currenScreenWidget = StartScreen(_swtichScreen);
-    } else if (displayedScreenName == 'questions-screen') {
-      currenScreenWidget = const QuestionsScreen();
-    }
-    return currenScreenWidget;
+    return screenWidget();
   }
 }
