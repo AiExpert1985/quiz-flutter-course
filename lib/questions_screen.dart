@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz/answer_button.dart';
 import 'package:quiz/questions.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -40,22 +41,7 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
           ),
           const SizedBox(height: 20),
           ...questions[currentQuestionIndex].shuffledAnswers.map(
-                (item) => ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 10,
-                      horizontal: 40,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(40),
-                    ),
-                  ),
-                  onPressed: nextQuestion,
-                  child: Text(
-                    item,
-                    textAlign: TextAlign.center,
-                  ),
-                ),
+                (item) => AnswerButton(answer: item, onTap: nextQuestion)
               ),
         ],
       ),
