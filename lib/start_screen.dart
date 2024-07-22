@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class StartScreen extends StatelessWidget {
-  const StartScreen(this.onButtonPress, {super.key});
+  const StartScreen({required this.onTap, super.key});
 
-  final void Function() onButtonPress;
+  final void Function() onTap;
 
   @override
   Widget build(context) {
@@ -27,7 +27,7 @@ class StartScreen extends StatelessWidget {
           ),
           const SizedBox(height: 40, width: 50),
           OutlinedButton.icon(
-            onPressed: onButtonPress,
+            onPressed: onTap,
             style: OutlinedButton.styleFrom(
               side: const BorderSide(
                 color: Color.fromARGB(255, 155, 64, 64),
