@@ -23,7 +23,7 @@ class _QuizState extends State<Quiz> {
   Widget detectScreenWidget() {
     Widget returnedWidget = StartScreen(_swtichScreen);
     if (screenName == 'questions-screen') {
-      returnedWidget = const QuestionsScreen();
+      returnedWidget = QuestionsScreen(_swtichScreen);
     }
     return returnedWidget;
   }
