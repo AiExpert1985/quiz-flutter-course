@@ -14,16 +14,16 @@ class Quiz extends StatefulWidget {
 class _QuizState extends State<Quiz> {
   String screenName = 'start-screen';
 
-  void _swtichScreen() {
+  void swtichScreen() {
     setState(() {
       screenName = 'questions-screen';
     });
   }
 
   Widget detectScreenWidget() {
-    Widget returnedWidget = StartScreen(_swtichScreen);
+    Widget returnedWidget = StartScreen(onTap: swtichScreen,);
     if (screenName == 'questions-screen') {
-      returnedWidget = QuestionsScreen(_swtichScreen);
+      returnedWidget = QuestionsScreen(onTap: swtichScreen,);
     }
     return returnedWidget;
   }
