@@ -18,7 +18,6 @@ class _QuizState extends State<Quiz> {
   List<String> userAnswers = [];
 
   void swtichScreen() {
-    print(userAnswers.length);
     if (screenName == 'start-screen') {
       screenName = 'questions-screen';
     } else if (userAnswers.length < questions.length) {
