@@ -20,8 +20,9 @@ class _QuizState extends State<Quiz> {
   List<AnsweredQuestion> answeredQuestions = [];
 
   void swtichScreen() {
-    if (screenName == 'start-screen') {
-      screenName = 'questions-screen';
+    if (screenName == 'result-screen') {
+      screenName = 'start-screen';
+      answeredQuestions = [];
     } else if (answeredQuestions.length < questions.length) {
       screenName = 'questions-screen';
     } else {
@@ -33,7 +34,7 @@ class _QuizState extends State<Quiz> {
   void updateQuizResult(String answer) {
     int questionIndex = answeredQuestions.length;
     QuizQuestion question = questions[questionIndex];
-    AnsweredQuestion answeredQuestion = AnsweredQuestion( 
+    AnsweredQuestion answeredQuestion = AnsweredQuestion(
       questionNum: questionIndex,
       questionText: question.question,
       correctAnswer: question.correctAnswer,
@@ -53,7 +54,10 @@ class _QuizState extends State<Quiz> {
         updateQuizResult: updateQuizResult,
       );
     } else {
-      screenWidget = ResultScreen(answeredQuestions: answeredQuestions);
+      screenWidget = ResultScreen(
+        answeredQuestions: answeredQuestions,
+        onTap: swtichScreen,
+      );
     }
     return screenWidget;
   }
