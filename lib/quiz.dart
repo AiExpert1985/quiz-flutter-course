@@ -15,12 +15,12 @@ class Quiz extends StatefulWidget {
 
 class _QuizState extends State<Quiz> {
   String screenName = 'start-screen';
-  List<String> userAnswers = [];
+  List<String> quizResult = [];
 
   void swtichScreen() {
     if (screenName == 'start-screen') {
       screenName = 'questions-screen';
-    } else if (userAnswers.length < questions.length) {
+    } else if (quizResult.length < questions.length) {
       screenName = 'questions-screen';
     } else {
       screenName = 'result-screen';
@@ -28,8 +28,8 @@ class _QuizState extends State<Quiz> {
     setState(() {});
   }
 
-  void updateUserAnswers(String answer) {
-    userAnswers.add(answer);
+  void updateQuizResult(String answer) {
+    quizResult.add(answer);
     swtichScreen();
   }
 
@@ -40,10 +40,10 @@ class _QuizState extends State<Quiz> {
     } else if (screenName == 'questions-screen') {
       screenWidget = QuestionsScreen(
         onTap: swtichScreen,
-        updateUserAnswers: updateUserAnswers,
+        updateQuizResult: updateQuizResult,
       );
     } else {
-      screenWidget = ResultScreen(userAnswers: userAnswers);
+      screenWidget = ResultScreen(userAnswers: quizResult);
     }
     return screenWidget;
   }

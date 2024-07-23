@@ -13,7 +13,8 @@ class ResultScreen extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [Text('You answered X out of ${questions.length} correctly')],
+        children: [Text('You answered X out of ${questions.length} correctly'),
+        const Row(children: [Text('1'), Column(children: [Text('sdfsafasf'), Text('sfsfasf'), Text('asfsadf')],) ],)],
       ),
     );
   }
