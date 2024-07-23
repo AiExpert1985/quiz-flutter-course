@@ -23,6 +23,7 @@ class _QuizState extends State<Quiz> {
     if (screenName == 'result-screen') {
       screenName = 'start-screen';
       answeredQuestions = [];
+      AnsweredQuestion.resetClassVariables();
     } else if (answeredQuestions.length < questions.length) {
       screenName = 'questions-screen';
     } else {

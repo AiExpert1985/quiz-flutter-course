@@ -4,7 +4,8 @@ import 'package:quiz/answered_question.dart';
 import 'package:quiz/result_row.dart';
 
 class ResultScreen extends StatelessWidget {
-  const ResultScreen({required this.answeredQuestions, required this.onTap, super.key});
+  const ResultScreen(
+      {required this.answeredQuestions, required this.onTap, super.key});
 
   final List<AnsweredQuestion> answeredQuestions;
   final void Function() onTap;
@@ -25,20 +26,33 @@ class ResultScreen extends StatelessWidget {
               fontSize: 20,
             ),
           ),
-          const SizedBox(height: 20,),
-          ...answeredQuestions.map((e) {
-            return ResultRow(
-              answeredQuestion: e,
-            );
-          }),
-        TextButton.icon(
-              onPressed: onTap,
-              style: TextButton.styleFrom(
-                foregroundColor: Colors.white,
+          SizedBox(
+            height: 300,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  ...answeredQuestions.map((e) {
+                    return ResultRow(
+                      answeredQuestion: e,
+                    );
+                  }),
+                ],
               ),
-              icon: const Icon(Icons.refresh),
-              label: const Text('Restart Quiz!'),
-            )],
+            ),
+          ),
+          const SizedBox(height: 20),
+          TextButton.icon(
+            onPressed: onTap,
+            style: TextButton.styleFrom(
+              foregroundColor: Colors.white,
+            ),
+            icon: const Icon(Icons.refresh),
+            label: const Text('Restart Quiz!'),
+          ),
+        ],
       ),
     );
   }
