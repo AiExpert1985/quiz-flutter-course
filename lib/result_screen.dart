@@ -16,14 +16,20 @@ class ResultScreen extends StatelessWidget {
         children: [
           Text(
               'You answered ${AnsweredQuestion.userScore} out of ${AnsweredQuestion.totalQuestions} correctly'),
-          const Row(
-            children: [
-              Text('1'),
-              Column(
-                children: [Text('sdfsafasf'), Text('sfsfasf'), Text('asfsadf')],
-              )
-            ],
-          )
+          ...answeredQuestions.map((e) {
+            return Row(
+              children: [
+                Text('${e.questionNum}'),
+                Column(
+                  children: [
+                    Text(e.questionText),
+                    Text(e.correctAnswer),
+                    Text(e.userAnswer),
+                  ],
+                )
+              ],
+            );
+          }),
         ],
       ),
     );
