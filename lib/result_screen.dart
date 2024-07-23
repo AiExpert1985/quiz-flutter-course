@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:quiz/questions.dart';
+import 'package:quiz/answered_question.dart';
 
 class ResultScreen extends StatelessWidget {
-  const ResultScreen({required this.userAnswers, super.key});
+  const ResultScreen({required this.answeredQuestions, super.key});
 
-  final List<String> userAnswers;
+  final List<AnsweredQuestion> answeredQuestions;
 
   @override
   Widget build(context) {
@@ -13,8 +13,18 @@ class ResultScreen extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [Text('You answered X out of ${questions.length} correctly'),
-        const Row(children: [Text('1'), Column(children: [Text('sdfsafasf'), Text('sfsfasf'), Text('asfsadf')],) ],)],
+        children: [
+          Text(
+              'You answered ${AnsweredQuestion.userScore} out of ${AnsweredQuestion.totalQuestions} correctly'),
+          const Row(
+            children: [
+              Text('1'),
+              Column(
+                children: [Text('sdfsafasf'), Text('sfsfasf'), Text('asfsadf')],
+              )
+            ],
+          )
+        ],
       ),
     );
   }

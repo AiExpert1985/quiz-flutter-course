@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:quiz/questions.dart';
+import 'package:quiz/quiz_question.dart';
 import 'package:quiz/result_screen.dart';
 import 'package:quiz/start_screen.dart';
 import 'package:quiz/questions_screen.dart';
+import 'package:quiz/answered_question.dart';
 
 class Quiz extends StatefulWidget {
   const Quiz({super.key});
@@ -15,12 +17,12 @@ class Quiz extends StatefulWidget {
 
 class _QuizState extends State<Quiz> {
   String screenName = 'start-screen';
-  List<String> quizResult = [];
+  List<AnsweredQuestion> answeredQuestions = [];
 
   void swtichScreen() {
     if (screenName == 'start-screen') {
       screenName = 'questions-screen';
-    } else if (quizResult.length < questions.length) {
+    } else if (answeredQuestions.length < questions.length) {
       screenName = 'questions-screen';
     } else {
       screenName = 'result-screen';
@@ -29,7 +31,15 @@ class _QuizState extends State<Quiz> {
   }
 
   void updateQuizResult(String answer) {
-    quizResult.add(answer);
+    int questionIndex = answeredQuestions.length;
+    QuizQuestion question = questions[questionIndex];
+    AnsweredQuestion answeredQuestion = AnsweredQuestion( 
+      questionNum: questionIndex,
+      questionText: question.question,
+      correctAnswer: question.correctAnswer,
+      userAnswer: answer,
+    );
+    answeredQuestions.add(answeredQuestion);
     swtichScreen();
   }
 
@@ -43,7 +53,7 @@ class _QuizState extends State<Quiz> {
         updateQuizResult: updateQuizResult,
       );
     } else {
-      screenWidget = ResultScreen(userAnswers: quizResult);
+      screenWidget = ResultScreen(answeredQuestions: answeredQuestions);
     }
     return screenWidget;
   }
