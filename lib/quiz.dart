@@ -36,7 +36,7 @@ class _QuizState extends State<Quiz> {
     int questionIndex = answeredQuestions.length;
     QuizQuestion question = questions[questionIndex];
     AnsweredQuestion answeredQuestion = AnsweredQuestion(
-      questionNum: questionIndex,
+      questionNum: questionIndex + 1,
       questionText: question.question,
       correctAnswer: question.correctAnswer,
       userAnswer: answer,

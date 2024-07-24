@@ -16,29 +16,32 @@ class ResultRow extends StatelessWidget {
             questionNum: answeredQuestion.questionNum,
             isCorrectlyAnswered: answeredQuestion.isCorrectlyAnswered()),
         Expanded(
-          child: Column(
-            children: [
-              Text(
-                answeredQuestion.questionText,
-                textAlign: TextAlign.center,
-                style: GoogleFonts.lato(fontSize: 16),
-              ),
-              Text(
-                answeredQuestion.correctAnswer,
-                textAlign: TextAlign.center,
-                style: GoogleFonts.lato(
-                    color: const Color.fromARGB(255, 36, 33, 233)),
-              ),
-              Text(
-                answeredQuestion.userAnswer,
-                textAlign: TextAlign.center,
-                style: GoogleFonts.lato(
-                    color: const Color.fromARGB(255, 33, 16, 36)),
-              ),
-              const SizedBox(
-                height: 15,
-              )
-            ],
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              children: [
+                Text(
+                  answeredQuestion.questionText,
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.lato(fontSize: 16),
+                ),
+                Text(
+                  answeredQuestion.correctAnswer,
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.lato(
+                      color: const Color.fromARGB(255, 36, 33, 233)),
+                ),
+                Text(
+                  answeredQuestion.userAnswer,
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.lato(
+                      color: const Color.fromARGB(255, 33, 16, 36)),
+                ),
+                const SizedBox(
+                  height: 15,
+                )
+              ],
+            ),
           ),
         )
       ],

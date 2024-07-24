@@ -29,17 +29,20 @@ class ResultScreen extends StatelessWidget {
           SizedBox(
             height: 300,
             child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  ...answeredQuestions.map((e) {
-                    return ResultRow(
-                      answeredQuestion: e,
-                    );
-                  }),
-                ],
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                child: Column(
+                  children: [
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    ...answeredQuestions.map((e) {
+                      return ResultRow(
+                        answeredQuestion: e,
+                      );
+                    }),
+                  ],
+                ),
               ),
             ),
           ),
